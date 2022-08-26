@@ -67,6 +67,7 @@ func main() {
 					// Menu setelah login:
 					var secondMenu int
 					for secondMenu != 99 {
+						fmt.Println(secondMenu)
 						fmt.Println("-------------------------------")
 						fmt.Print("📌 Menu Account Service App:\n\n1. Profile Anda\n2. Update Account\n3. Delete Account\n4. Top-Up\n5. Transfer\n6. History Top-Up\n7. Histroy Transfer\n8. Check Others\n99. Exit\n\n")
 						fmt.Print("📌 Masukkan pilihan anda: ")
@@ -119,6 +120,7 @@ func main() {
 									fmt.Println("Gagal menghapus!", err)
 								} else if res >= 0 {
 									fmt.Println("Berhasil menghapus!")
+									secondMenu = 99
 									break
 								}
 							}
