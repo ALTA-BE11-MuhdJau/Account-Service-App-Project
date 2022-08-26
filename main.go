@@ -40,13 +40,13 @@ func main() {
 
 				rowAffected, err := user.AddUser(db, addUser)
 				if err != nil {
-					fmt.Println("Error insert data.", err.Error())
+					fmt.Println("Error insert data.", err)
 				} else {
-					if rowAffected > 0 {
-						fmt.Println("Insert sukses, Row affected:", rowAffected)
+					if rowAffected == 0 {
+						fmt.Println("Gagal insert data.")
 
 					} else {
-						fmt.Println("Gagal insert data.")
+						fmt.Println("Insert sukses, Row affected:", rowAffected)
 					}
 				}
 			}
@@ -78,7 +78,32 @@ func main() {
 							}
 						case 2:
 							{
+								updateUser := entities.User{}
+								fmt.Println(updateUser)
 
+								fmt.Println("-------------------------------")
+								fmt.Println("Nama User Anda:")
+								fmt.Scanln(&updateUser.Name)
+								fmt.Println("Tanggal Lahir:")
+								fmt.Scanln(&updateUser.DoB)
+								fmt.Println("Jenis Kelamin:")
+								fmt.Scanln(&updateUser.Gender)
+								fmt.Println("Nomor Telepon:")
+								fmt.Scanln(&updateUser.Telp)
+								fmt.Println("Input Password:")
+								fmt.Scanln(&updateUser.Password)
+								fmt.Println(updateUser)
+
+								rowAffect, err := user.UpdateUser(db, updateUser)
+								if err != nil {
+									fmt.Println("Error update data.", err)
+								} else {
+									if rowAffect == 0 {
+										fmt.Println("Tidak ada data yang diubah!")
+									} else {
+										fmt.Println("Update sukses, Row affected =", rowAffect)
+									}
+								}
 							}
 						case 3:
 							{
